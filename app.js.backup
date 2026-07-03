@@ -1,0 +1,66 @@
+const {createApp}=Vue;
+createApp({
+    data(){return{
+        aktif:'all',cari:'',dark:false,
+        nama:'', alamat:'', nohp:'',
+        tabs:[{k:'all',n:'🛍️ Semua'},{k:'seragam',n:'👔 Seragam'},{k:'gamis',n:'🧕 Gamis'},{k:'atk',n:'📚 ATK'}],
+        detail:null,cart:[],showCart:false,toast:'',
+        produk:[
+    // ========== GAMIS (id 1-20) ==========
+    {id:1,nm:"Set Syari Neema Ceruty Premium",kt:'gamis',hr:200000,em:'🧕',bg:'#EDE7F6',badge:'Premium',bc:'premium',diskon:10,img:'img/gamis-set-syari-neema.jpg',desc:'Ready 3 warna: Hitam, Navy, Abu. All Size.'},
+    {id:2,nm:"Gamis Outer Ceruty (120K) - 2 Warna",kt:'gamis',hr:120000,em:'🧕',bg:'#E8EAF6',badge:'Promo',bc:'promo',diskon:0,img:'',desc:'✅ Ready 2 warna\n✅ Bahan Ceruty\n✅ All Size\n✅ Adem & tidak nerawang'},
+
+    // ========== SERAGAM (id 12-24) ==========
+    {id:12,nm:"Seragam SD Merah Putih (2-4)",kt:'seragam',hr:120000,em:'👔',bg:'#FFE0EC',badge:'Best Seller',bc:'best',diskon:0,img:'',desc:'1 setel. Axinite + Famatex premium.'},
+    {id:13,nm:"Seragam SD Merah Putih (6-8)",kt:'seragam',hr:130000,em:'👔',bg:'#FFE0EC',badge:'',bc:'',diskon:0,img:'',desc:'Size 6-8. Premium.'},
+    {id:14,nm:"Seragam SD Merah Putih (10-12)",kt:'seragam',hr:140000,em:'👔',bg:'#FFE0EC',badge:'',bc:'',diskon:0,img:'',desc:'Size 10-12. Premium.'},
+    {id:15,nm:"Seragam SD Merah Putih (14)",kt:'seragam',hr:150000,em:'👔',bg:'#FFE0EC',badge:'',bc:'',diskon:0,img:'',desc:'Size 14. Premium.'},
+    {id:16,nm:"Seragam SMP Biru Putih (S-M)",kt:'seragam',hr:155000,em:'👔',bg:'#E0ECFF',badge:'',bc:'',diskon:0,img:'',desc:'Size S-M. Axinite + Famatex.'},
+    {id:17,nm:"Seragam SMP Biru Putih (L-XL)",kt:'seragam',hr:165000,em:'👔',bg:'#E0ECFF',badge:'',bc:'',diskon:0,img:'',desc:'Size L-XL. Premium.'},
+    {id:18,nm:"Seragam SMP Biru Putih (XXL)",kt:'seragam',hr:170000,em:'👔',bg:'#E0ECFF',badge:'',bc:'',diskon:0,img:'',desc:'Size XXL. Premium.'},
+    {id:19,nm:"Seragam Cowok + Free Kaos Kaki",kt:'seragam',hr:150000,em:'👔',bg:'#E3F2FD',badge:'Best Seller',bc:'best',diskon:5,img:'',desc:'FREE kaos kaki!'},
+    {id:20,nm:"Seragam Cewek Lengan Panjang",kt:'seragam',hr:155000,em:'👔',bg:'#FCE4EC',badge:'Best Seller',bc:'best',diskon:0,img:'',desc:'FREE kaos kaki!'},
+    {id:21,nm:"Seragam Putih Hitam Cowok 1 Setel",kt:'seragam',hr:110000,em:'👔',bg:'#F5F5F5',badge:'Promo',bc:'promo',diskon:0,img:'',desc:'1 setel putih hitam.'},
+    {id:22,nm:"Celana Pendek Famatex (24)",kt:'seragam',hr:50000,em:'👖',bg:'#F5F0E8',badge:'',bc:'',diskon:0,img:'',desc:'Satuan Famatex.'},
+    {id:23,nm:"Rok Famatex (26-28)",kt:'seragam',hr:75000,em:'👗',bg:'#F5F0E8',badge:'',bc:'',diskon:0,img:'',desc:'Satuan Famatex.'},
+    {id:24,nm:"Kemeja Pramuka",kt:'seragam',hr:75000,em:'👔',bg:'#E8F0E0',badge:'Promo',bc:'promo',diskon:0,img:'',desc:'Lengan pendek & panjang.'},
+
+    // ========== ATK (id 25-32) ==========
+    {id:25,nm:"Buku SiDU Isi 38",kt:'atk',hr:4000,em:'📚',bg:'#FFF5E0',badge:'Best Seller',bc:'best',diskon:0,img:'',desc:'Eceran. Pack 10: Rp 35.000.'},
+    {id:26,nm:"Buku SiDU Isi 58",kt:'atk',hr:5000,em:'📚',bg:'#FFF5E0',badge:'',bc:'',diskon:0,img:'',desc:'Eceran. Pack 10: Rp 45.000.'},
+    {id:27,nm:"Paket ATK Lengkap",kt:'atk',hr:45000,em:'📚',bg:'#FFF5E0',badge:'Best Seller',bc:'best',diskon:0,img:'',desc:'2 buku, 2 pulpen, pensil, dll.'},
+    {id:28,nm:"Pulpen JK 100",kt:'atk',hr:3000,em:'🖊️',bg:'#FFE8F0',badge:'',bc:'',diskon:0,img:'',desc:'Eceran.'},
+    {id:29,nm:"Spidol Snowman 12 Warna",kt:'atk',hr:70000,em:'🎨',bg:'#FFE8F0',badge:'',bc:'',diskon:0,img:'',desc:'Set 12 warna.'},
+    {id:30,nm:"Pensil FS 9000",kt:'atk',hr:1800,em:'✏️',bg:'#FFE8F0',badge:'',bc:'',diskon:0,img:'',desc:'Eceran.'},
+    {id:31,nm:"Topi Famatex",kt:'atk',hr:15000,em:'🧢',bg:'#F5F0E8',badge:'',bc:'',diskon:0,img:'',desc:'Topi seragam.'},
+    {id:32,nm:"Dasi SD + Sabuk SD",kt:'atk',hr:15000,em:'👔',bg:'#F5F0E8',badge:'',bc:'',diskon:0,img:'',desc:'Paket dasi + sabuk.'}
+]
+    }},
+    computed:{
+        filtered(){
+            let p=this.aktif==='all'?this.produk:this.produk.filter(x=>x.kt===this.aktif);
+            if(this.cari) p=p.filter(x=>x.nm.toLowerCase().includes(this.cari.toLowerCase()));
+            return p;
+        },
+        total(){return this.cart.reduce((s,i)=>s+i.hr,0)}
+    },
+    watch:{dark(v){document.body.classList.toggle('light',!v)}},
+    methods:{
+        addCart(p){this.cart.push(p);this.toast='✅ '+p.nm;setTimeout(()=>this.toast='',2000)},
+        scrollTop(){window.scrollTo({top:0,behavior:'smooth'})},
+        checkout(){
+            if(!this.nama || !this.alamat || !this.nohp) return alert('Isi Nama, Alamat, No HP dulu!');
+            let msg = 'ORDER WIRDA RDR FASHION\n\n';
+            msg += 'DAFTAR PESANAN:\n\n';
+            this.cart.forEach((i,n) => msg += (n+1) + '. ' + i.nm + ' - Rp ' + i.hr.toLocaleString('id-ID') + '\n');
+            msg += '\nTOTAL: Rp ' + this.total.toLocaleString('id-ID') + '\n\n';
+            msg += 'DATA PEMESAN:\n';
+            msg += 'Nama    : ' + this.nama + '\n';
+            msg += 'Alamat  : ' + this.alamat + '\n';
+            msg += 'No HP   : ' + this.nohp + '\n\n';
+            msg += 'Mohon dikonfirmasi ya Kak, terima kasih!';
+            window.open('https://wa.me/6281511911381?text=' + encodeURIComponent(msg), '_blank');
+            this.cart=[];this.showCart=false;this.nama='';this.alamat='';this.nohp='';
+        }
+    }
+}).mount('#app');

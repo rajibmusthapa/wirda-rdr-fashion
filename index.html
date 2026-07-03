@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO -->
+    <title>Wirda RDR Fashion - Seragam Sekolah, Gamis & ATK Bandung</title>
+    <meta name="description" content="Wirda RDR Fashion - Toko seragam sekolah SD SMP SMA, gamis syari, alat tulis kantor (ATK), aksesoris sekolah. Jl. Raya Banjaran, Batu Karut, Arjasari, Bandung. Order via WhatsApp 0815-1191-1381.">
+    <meta name="keywords" content="Wirda RDR Fashion, seragam sekolah Bandung, toko seragam Arjasari, gamis syari Banjaran, ATK murah, seragam Axinite, celana Famatex, baju seragam SD, seragam SMP, perlengkapan sekolah">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Wirda RDR Fashion">
+    <link rel="canonical" href="https://wirda-rdr-fashion.vercel.app/">
+    
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="Wirda RDR Fashion - Seragam, Gamis & ATK">
+    <meta property="og:description" content="Toko seragam, gamis, ATK lengkap di Bandung. Order via WhatsApp!">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="img/logo.png">
+    
+    <!-- GOOGLE VERIFICATION -->
+    <meta name="google-site-verification" content="uFgLm0mFjZSN4CKXRMAxW6X0tEo-ZQ7BKpjyJVgsahc">
+    
+    <!-- GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-16W2WX2388"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-16W2WX2388');
+    </script>
+    
+    <!-- PWA & FAVICON -->
+    <meta name="theme-color" content="#2C3E50">
+    <link rel="icon" href="img/favicon.jpg">
+    <link rel="apple-touch-icon" href="img/logo.png">
+    
+    <!-- VUE.JS -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+    <header class="header">
+        <img src="img/logo.png" class="logo" alt="Wirda RDR">
+        <div>
+            <h1>Wirda RDR Fashion</h1>
+            <p>Seragam • Gamis • ATK • Aksesoris</p>
+        </div>
+    </header>
+    
+    <div class="banner">🔥 PROMO! Seragam SD mulai Rp 120.000 | ATK mulai Rp 1.800</div>
+    
+    <div style="padding:8px 12px">
+        <input class="search-bar" v-model="cari" placeholder="🔍 Cari produk...">
+    </div>
+    
+    <nav class="tabs">
+        <button v-for="t in tabs" :key="t.k" :class="{on: aktif===t.k}" @click="aktif=t.k">{{ t.n }}</button>
+    </nav>
+    
+    <div class="grid">
+        <div v-for="p in filtered" :key="p.id" class="card" @click="detail=p">
+            <div class="card-img" :style="p.img ? '' : 'background-color:'+p.bg">
+                <img v-if="p.img" :src="p.img" style="width:100%;height:100%;object-fit:contain" loading="lazy" :alt="p.nm">
+                <span v-else class="emoji">{{ p.em }}</span>
+                <span v-if="p.badge" :class="'badge '+p.bc">{{ p.badge }}</span>
+                <span v-if="p.diskon" class="diskon">-{{ p.diskon }}%</span>
+            </div>
+            <div class="card-body">
+                <div class="card-name">{{ p.nm }}</div>
+                <div class="rating">⭐ 5.0</div>
+                <div class="card-price">Rp {{ p.hr.toLocaleString('id-ID') }}</div>
+                <button class="btn-cart" @click.stop="addCart(p)">🛒 Tambah</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- DETAIL MODAL -->
+    <div v-if="detail" class="overlay" @click.self="detail=null">
+        <div class="modal">
+            <div class="modal-img" :style="detail.img ? '' : 'background-color:'+detail.bg">
+                <img v-if="detail.img" :src="detail.img" style="width:100%;height:100%;object-fit:contain" :alt="detail.nm">
+                <span v-else style="font-size:80px">{{ detail.em }}</span>
+            </div>
+            <button class="modal-close" @click="detail=null">×</button>
+            <div class="modal-body">
+                <div class="modal-name">{{ detail.nm }}</div>
+                <div class="rating">⭐ 5.0 ({{ Math.floor(Math.random()*50)+10 }} reviews)</div>
+                <div class="modal-desc">{{ detail.desc }}</div>
+                <div class="modal-price">Rp {{ detail.hr.toLocaleString('id-ID') }}</div>
+                <button class="btn-buy" @click="addCart(detail);detail=null">🛒 Tambah ke Keranjang</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CART FAB -->
+    <button class="cart-fab" @click="showCart=!showCart">🛒<span v-if="cart.length" class="cart-num">{{ cart.length }}</span></button>
+    
+    <!-- CART MODAL -->
+    <div v-if="showCart" class="overlay" @click.self="showCart=false">
+        <div class="cart-box">
+            <h3>🛒 Keranjang</h3>
+            <div v-if="!cart.length" style="text-align:center;color:#aaa;padding:20px">Kosong 😊</div>
+            <div v-for="(c,i) in cart" :key="i" class="cart-item">
+                <span>{{ c.nm }}</span>
+                <span style="color:#C19A6B;font-weight:bold">Rp {{ c.hr.toLocaleString('id-ID') }}</span>
+            </div>
+            <div v-if="cart.length" style="font-weight:bold;margin:12px 0">Total: Rp {{ total.toLocaleString('id-ID') }}</div>
+            <div v-if="cart.length" style="display:flex;flex-direction:column;gap:6px;margin:10px 0">
+                <input v-model="nama" placeholder="Nama Lengkap">
+                <input v-model="alamat" placeholder="Alamat Lengkap">
+                <input v-model="nohp" placeholder="No. HP/WA">
+            </div>
+            <button v-if="cart.length" class="btn-wa" @click="checkout">💬 Order via WhatsApp</button>
+            <button class="btn-close" @click="showCart=false">Tutup</button>
+        </div>
+    </div>
+    
+    <div v-if="toast" class="toast">{{ toast }}</div>
+    
+    <nav class="bottom-nav">
+        <a href="#" @click.prevent="scrollTop"><span class="icon">🏠</span> Beranda</a>
+        <a href="#" @click.prevent="showCart=true"><span class="icon">🛒</span> Keranjang</a>
+        <a href="tentang.html"><span class="icon">📝</span> Tentang</a>
+        <a href="https://wa.me/62898 7695 995"><span class="icon">💬</span> CS</a>
+    </nav>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
