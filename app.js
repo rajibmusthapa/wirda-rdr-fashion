@@ -37,14 +37,13 @@ createApp({
                     ]
                 },
 
-                // ─── SERAGAM SD (6 produk) ───
-                { id: 6, nm: 'Stel SD Kemeja Pendek + Celana Panjang (2-4)', kt: 'seragam', hr: 125000, em: '👔', bg: '#FFE0EC', badge: 'Stel SD', bc: 'stel', diskon: 0, img: 'img/seragam-sd.jpg', desc: '1 stel SD (Baju Pendek + Celana).\nBahan: Axinite & Famatex.\nSize: 2-4.' },
-                { id: 7, nm: 'Stel SD Kemeja Panjang + Rok Panjang (2-4)', kt: 'seragam', hr: 130000, em: '👔', bg: '#FFE0EC', badge: 'Stel SD', bc: 'stel', diskon: 0, img: 'img/seragam-sd.jpg', desc: '1 stel SD (Baju Panjang + Rok Panjang).\nBahan: Axinite & Famatex.\nSize: 2-4.' },
-                { id: 8, nm: 'Stel SD Kemeja Panjang + Celana Panjang (2-4)', kt: 'seragam', hr: 130000, em: '👔', bg: '#FFE0EC', badge: 'Stel SD', bc: 'stel', diskon: 0, img: 'img/seragam-sd.jpg', desc: '1 stel SD (Baju Panjang + Celana).\nBahan: Axinite & Famatex.\nSize: 2-4.' },
-                { id: 9, nm: 'Stel SD Merah Putih Panjang + Celana (2-4)', kt: 'seragam', hr: 130000, em: '👔', bg: '#FFE0EC', badge: 'Stel SD', bc: 'stel', diskon: 0, img: 'img/seragam-sd.jpg', desc: '1 stel SD Merah Putih (Baju Panjang + Celana).\nBahan: Axinite & Famatex.\nSize: 2-4.' },
-                { id: 10, nm: 'Stel Pramuka Siaga Panjang + Rok (2-4)', kt: 'seragam', hr: 140000, em: '👔', bg: '#E8F0E0', badge: 'Pramuka', bc: 'pramuka', diskon: 0, img: 'img/seragam-pramuka.jpg', desc: '1 stel Pramuka Siaga (Baju Panjang + Rok).\nBahan: Axinite & Famatex.\nSize: 2-4.' },
-                { id: 11, nm: 'Stel Pramuka Siaga Pendek + Celana (2-4)', kt: 'seragam', hr: 145000, em: '👔', bg: '#E8F0E0', badge: 'Pramuka', bc: 'pramuka', diskon: 0, img: 'img/seragam-pramuka.jpg', desc: '1 stel Pramuka Siaga (Baju Pendek + Celana).\nBahan: Axinite & Famatex.\nSize: 2-4.' },
-
+// ─── SERAGAM SD ───
+{ id: 6, nm: 'Stel SD Kemeja Pendek + Celana Panjang (2-4)', kt: 'seragam', hr: 125000, em: '👔', bg: '#FFE0EC', badge: 'Stel SD', bc: 'stel', diskon: 0, img: 'img/seragam-sd-pendek-celana.jpg', desc: '1 stel SD (Baju Pendek + Celana).\nBahan: Axinite & Famatex.\nSize: 2-4.' },
+{ id: 7, nm: 'Stel SD Kemeja Panjang + Rok Panjang (2-4)', kt: 'seragam', hr: 130000, em: '👔', bg: '#FFE0EC', badge: 'Stel SD', bc: 'stel', diskon: 0, img: 'img/seragam-sd-panjang-rok.jpg', desc: '1 stel SD (Baju Panjang + Rok Panjang).\nBahan: Axinite & Famatex.\nSize: 2-4.' },
+{ id: 8, nm: 'Stel SD Kemeja Panjang + Celana Panjang (2-4)', kt: 'seragam', hr: 130000, em: '👔', bg: '#FFE0EC', badge: 'Stel SD', bc: 'stel', diskon: 0, img: 'img/seragam-sd-panjang-celana.jpg', desc: '1 stel SD (Baju Panjang + Celana).\nBahan: Axinite & Famatex.\nSize: 2-4.' },
+{ id: 9, nm: 'Stel SD Merah Putih Panjang + Celana (2-4)', kt: 'seragam', hr: 130000, em: '👔', bg: '#FFE0EC', badge: 'Stel SD', bc: 'stel', diskon: 0, img: 'img/seragam-sd-merah-putih.jpg', desc: '1 stel SD Merah Putih (Baju Panjang + Celana).\nBahan: Axinite & Famatex.\nSize: 2-4.' },
+{ id: 10, nm: 'Stel Pramuka Siaga Panjang + Rok (2-4)', kt: 'seragam', hr: 140000, em: '👔', bg: '#E8F0E0', badge: 'Pramuka', bc: 'pramuka', diskon: 0, img: 'img/seragam-pramuka-panjang-rok.jpg', desc: '1 stel Pramuka Siaga (Baju Panjang + Rok).\nBahan: Axinite & Famatex.\nSize: 2-4.' },
+{ id: 11, nm: 'Stel Pramuka Siaga Pendek + Celana (2-4)', kt: 'seragam', hr: 145000, em: '👔', bg: '#E8F0E0', badge: 'Pramuka', bc: 'pramuka', diskon: 0, img: 'img/seragam-pramuka-pendek-celana.jpg', desc: '1 stel Pramuka Siaga (Baju Pendek + Celana).\nBahan: Axinite & Famatex.\nSize: 2-4.' },
                 // ─── SERAGAM SMP (1 produk) ───
                 { id: 12, nm: 'Stel SMP Kemeja Panjang + Rok Panjang (S-M)', kt: 'seragam', hr: 150000, em: '👔', bg: '#E0ECFF', badge: 'SMP', bc: 'smp', diskon: 0, img: 'img/seragam-smp.jpg', desc: '1 stel SMP (Baju Panjang + Rok Panjang).\nBahan: Axinite & Famatex.\nSize: S-M.' },
             ]
